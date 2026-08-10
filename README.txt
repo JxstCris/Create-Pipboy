@@ -1,0 +1,1 @@
+The source code of this project is licensed under the MIT License. All interface designs, trademarks, and visual concepts related to the Pip-Boy are the intellectual property of Bethesda Softworks
