@@ -50,11 +50,9 @@ public class GuipipboymainScreen extends AbstractContainerScreen<GuipipboymainMe
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
         if (ConditionshowitemProcedure.execute(entity)) {
-            // Pestaña ITEM: Renderiza slots, ítems del inventario, ítem sostenido y tooltips
             super.render(guiGraphics, mouseX, mouseY, partialTicks);
             this.renderTooltip(guiGraphics, mouseX, mouseY);
         } else {
-            // Pestañas STAT y DATA: Renderiza manualmente fondo oscuro, botones y textos, omitiendo los slots
             this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
             this.renderBg(guiGraphics, partialTicks, mouseX, mouseY);
 
