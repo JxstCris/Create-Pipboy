@@ -1,0 +1,65 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "pipboy:pipboycase"
+  },
+  "loops": 1,
+  "results": [
+    {
+      "id": "pipboy:pipboy_3000"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "pipboy:unfinishedpipboy"
+        },
+        {
+          "item": "pipboy:energyzed_redstone_core"
+        }
+      ],
+      "results": [
+        {
+          "id": "pipboy:unfinishedpipboy"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "pipboy:unfinishedpipboy"
+        },
+        {
+          "item": "create_new_age:copper_circuit"
+        }
+      ],
+      "results": [
+        {
+          "id": "pipboy:unfinishedpipboy"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "pipboy:unfinishedpipboy"
+        },
+        {
+          "item": "create:electron_tube"
+        }
+      ],
+      "results": [
+        {
+          "id": "pipboy:unfinishedpipboy"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "pipboy:unfinishedpipboy"
+  }
+}

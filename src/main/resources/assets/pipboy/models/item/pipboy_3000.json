@@ -1,0 +1,7 @@
+{
+  "parent": "pipboy:custom/pipboy_3000",
+  "textures": {
+    "2": "pipboy:block/pipboy3000_texture_we",
+    "particle": "pipboy:item/pipboy3000_texture_we"
+  }
+}

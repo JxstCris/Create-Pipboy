@@ -1,0 +1,43 @@
+{
+  "stimpak_use": {
+    "subtitle": "subtitles.stimpak_use",
+    "sounds": [
+      {
+        "name": "pipboy:stimpak_use",
+        "stream": false
+      }
+    ]
+  },
+  "static_01": {
+    "sounds": [
+      {
+        "name": "pipboy:ui_static_c_01",
+        "stream": false
+      }
+    ]
+  },
+  "static_02": {
+    "sounds": [
+      {
+        "name": "pipboy:ui_static_c_02",
+        "stream": false
+      }
+    ]
+  },
+  "static_03": {
+    "sounds": [
+      {
+        "name": "pipboy:ui_static_c_03",
+        "stream": false
+      }
+    ]
+  },
+  "button_select": {
+    "sounds": [
+      {
+        "name": "pipboy:ui_pipboy_mode",
+        "stream": false
+      }
+    ]
+  }
+}
