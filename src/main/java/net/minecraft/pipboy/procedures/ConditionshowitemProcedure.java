@@ -7,6 +7,6 @@ public class ConditionshowitemProcedure {
 	public static boolean execute(Entity entity) {
 		if (entity == null)
 			return false;
-		return entity.getData(PipboyModVariables.PLAYER_VARIABLES).pipboy_tab == 0;
+		return (entity.getCapability(PipboyModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new PipboyModVariables.PlayerVariables())).pipboy_tab == 0;
 	}
 }

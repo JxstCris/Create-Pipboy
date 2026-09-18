@@ -10,9 +10,9 @@ import net.minecraft.network.chat.Component;
 
 import java.util.List;
 
-public class UnfinishedpipboyItem extends Item {
-	public UnfinishedpipboyItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
+public class EnergyzedRedstoneCoreItem extends Item {
+	public EnergyzedRedstoneCoreItem() {
+		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
 	}
 
 	@Override

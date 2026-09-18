@@ -1,46 +1,75 @@
+
 package net.minecraft.pipboy.item.inventory;
 
-import net.neoforged.neoforge.items.ComponentItemHandler;
-import net.neoforged.neoforge.event.entity.item.ItemTossEvent;
-import net.neoforged.neoforge.common.MutableDataComponentHolder;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
+import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.common.capabilities.ICapabilitySerializable;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.pipboy.world.inventory.GuipipboymainMenu;
 import net.minecraft.pipboy.init.PipboyModItems;
-import net.minecraft.core.component.DataComponents;
+import net.minecraft.pipboy.client.gui.GuipipboymainScreen;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.Direction;
+import net.minecraft.client.Minecraft;
 
+import javax.annotation.Nullable;
 import javax.annotation.Nonnull;
 
-@EventBusSubscriber
-public class Pipboy3000InventoryCapability extends ComponentItemHandler {
+@Mod.EventBusSubscriber(Dist.CLIENT)
+public class Pipboy3000InventoryCapability implements ICapabilitySerializable<CompoundTag> {
 	@SubscribeEvent
+	@OnlyIn(Dist.CLIENT)
 	public static void onItemDropped(ItemTossEvent event) {
 		if (event.getEntity().getItem().getItem() == PipboyModItems.PIPBOY_3000.get()) {
-			Player player = event.getPlayer();
-			if (player.containerMenu instanceof GuipipboymainMenu)
-				player.closeContainer();
+			if (Minecraft.getInstance().screen instanceof GuipipboymainScreen) {
+				Minecraft.getInstance().player.closeContainer();
+			}
 		}
 	}
 
-	public Pipboy3000InventoryCapability(MutableDataComponentHolder parent) {
-		super(parent, DataComponents.CONTAINER, 36);
+	private final LazyOptional<ItemStackHandler> inventory = LazyOptional.of(this::createItemHandler);
+
+	@Override
+	public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> capability, @Nullable Direction side) {
+		return capability == ForgeCapabilities.ITEM_HANDLER ? this.inventory.cast() : LazyOptional.empty();
 	}
 
 	@Override
-	public int getSlotLimit(int slot) {
-		return 64;
+	public CompoundTag serializeNBT() {
+		return getItemHandler().serializeNBT();
 	}
 
 	@Override
-	public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-		return stack.getItem() != PipboyModItems.PIPBOY_3000.get();
+	public void deserializeNBT(CompoundTag nbt) {
+		getItemHandler().deserializeNBT(nbt);
 	}
 
-	@Override
-	public ItemStack getStackInSlot(int slot) {
-		return super.getStackInSlot(slot).copy();
+	private ItemStackHandler createItemHandler() {
+		return new ItemStackHandler(36) {
+			@Override
+			public int getSlotLimit(int slot) {
+				return 64;
+			}
+
+			@Override
+			public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
+				return stack.getItem() != PipboyModItems.PIPBOY_3000.get();
+			}
+
+			@Override
+			public void setSize(int size) {
+			}
+		};
+	}
+
+	private ItemStackHandler getItemHandler() {
+		return inventory.orElseThrow(RuntimeException::new);
 	}
 }

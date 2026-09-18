@@ -1,0 +1,14 @@
+{
+  "type": "create_new_age:energising",
+  "energy_needed": 10000,
+  "ingredients": [
+    {
+      "item": "pipboy:redstone_core"
+    }
+  ],
+  "results": [
+    {
+      "item": "pipboy:energyzed_redstonecore"
+    }
+  ]
+}

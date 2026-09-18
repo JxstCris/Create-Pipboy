@@ -1,6 +1,14 @@
+
 package net.minecraft.pipboy.item;
 
+import net.minecraftforge.network.NetworkHooks;
+import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+
 import net.minecraft.world.level.Level;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -11,21 +19,32 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.pipboy.world.inventory.GuipipboymainMenu;
+import net.minecraft.pipboy.item.inventory.Pipboy3000InventoryCapability;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.nbt.CompoundTag;
+
+import javax.annotation.Nullable;
+
+import java.util.List;
 
 import io.netty.buffer.Unpooled;
 
 public class Pipboy3000Item extends Item {
 	public Pipboy3000Item() {
-		super(new Item.Properties().stacksTo(1));
+		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+	}
+
+	@Override
+	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, world, list, flag);
 	}
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
 		if (entity instanceof ServerPlayer serverPlayer) {
-			serverPlayer.openMenu(new MenuProvider() {
+			NetworkHooks.openScreen(serverPlayer, new MenuProvider() {
 				@Override
 				public Component getDisplayName() {
 					return Component.literal("Pipboy");
@@ -44,5 +63,24 @@ public class Pipboy3000Item extends Item {
 			});
 		}
 		return ar;
+	}
+
+	@Override
+	public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag compound) {
+		return new Pipboy3000InventoryCapability();
+	}
+
+	@Override
+	public CompoundTag getShareTag(ItemStack stack) {
+		CompoundTag nbt = stack.getOrCreateTag();
+		stack.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> nbt.put("Inventory", ((ItemStackHandler) capability).serializeNBT()));
+		return nbt;
+	}
+
+	@Override
+	public void readShareTag(ItemStack stack, @Nullable CompoundTag nbt) {
+		super.readShareTag(stack, nbt);
+		if (nbt != null)
+			stack.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> ((ItemStackHandler) capability).deserializeNBT((CompoundTag) nbt.get("Inventory")));
 	}
 }

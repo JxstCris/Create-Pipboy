@@ -1,44 +1,28 @@
+
 /*
  *    MCreator note: This file will be REGENERATED on each build.
  */
 package net.minecraft.pipboy.init;
 
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
+import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.DeferredRegister;
 
 import net.minecraft.world.item.Item;
-import net.minecraft.pipboy.item.inventory.Pipboy3000InventoryCapability;
 import net.minecraft.pipboy.item.UnfinishedpipboyItem;
+import net.minecraft.pipboy.item.StoragecomponentItem;
 import net.minecraft.pipboy.item.RedstoneCoreItem;
 import net.minecraft.pipboy.item.PipboycaseItem;
 import net.minecraft.pipboy.item.Pipboy3000Item;
-import net.minecraft.pipboy.item.EnergyzedRedsoneCoreItem;
+import net.minecraft.pipboy.item.EnergyzedRedstoneCoreItem;
 import net.minecraft.pipboy.PipboyMod;
 
-@EventBusSubscriber
 public class PipboyModItems {
-	public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems(PipboyMod.MODID);
-	public static final DeferredItem<Item> PIPBOY_3000;
-	public static final DeferredItem<Item> REDSTONE_CORE;
-	public static final DeferredItem<Item> ENERGYZED_REDSTONE_CORE;
-	public static final DeferredItem<Item> PIPBOYCASE;
-	public static final DeferredItem<Item> UNFINISHEDPIPBOY;
-	static {
-		PIPBOY_3000 = REGISTRY.register("pipboy_3000", Pipboy3000Item::new);
-		REDSTONE_CORE = REGISTRY.register("redstone_core", RedstoneCoreItem::new);
-		ENERGYZED_REDSTONE_CORE = REGISTRY.register("energyzed_redstone_core", EnergyzedRedsoneCoreItem::new);
-		PIPBOYCASE = REGISTRY.register("pipboycase", PipboycaseItem::new);
-		UNFINISHEDPIPBOY = REGISTRY.register("unfinishedpipboy", UnfinishedpipboyItem::new);
-	}
-
-	// Start of user code block custom items
-	// End of user code block custom items
-	@SubscribeEvent
-	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-		event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new Pipboy3000InventoryCapability(stack), PIPBOY_3000.get());
-	}
+	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, PipboyMod.MODID);
+	public static final RegistryObject<Item> PIPBOY_3000 = REGISTRY.register("pipboy_3000", () -> new Pipboy3000Item());
+	public static final RegistryObject<Item> REDSTONE_CORE = REGISTRY.register("redstone_core", () -> new RedstoneCoreItem());
+	public static final RegistryObject<Item> ENERGYZED_REDSTONECORE = REGISTRY.register("energyzed_redstonecore", () -> new EnergyzedRedstoneCoreItem());
+	public static final RegistryObject<Item> PIPBOYCASE = REGISTRY.register("pipboycase", () -> new PipboycaseItem());
+	public static final RegistryObject<Item> UNFINISHEDPIPBOY = REGISTRY.register("unfinishedpipboy", () -> new UnfinishedpipboyItem());
+	public static final RegistryObject<Item> STORAGECOMPONENT = REGISTRY.register("storagecomponent", () -> new StoragecomponentItem());
 }

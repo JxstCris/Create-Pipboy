@@ -1,13 +1,4 @@
 {
-  "stimpak_use": {
-    "subtitle": "subtitles.stimpak_use",
-    "sounds": [
-      {
-        "name": "pipboy:stimpak_use",
-        "stream": false
-      }
-    ]
-  },
   "static_01": {
     "sounds": [
       {
