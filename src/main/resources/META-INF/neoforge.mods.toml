@@ -4,9 +4,9 @@ license="MIT License"
 
 [[mods]]
 modId="pipboy"
-version="0.0.2.32"
+version="1.0.0"
 displayName="Pipboy"
-displayURL="https://mcreator.net"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/create-pipboy"
 logoFile="logo.png"
 credits="Bethesta, Fallout Games"
 authors="JxstCris"
@@ -33,6 +33,18 @@ description="Pipboy 3000 from Fallout!"
     ordering="AFTER"
     side="BOTH"
 
+[[dependencies.pipboy]]
+    modId="create"
+    type="required"
+    versionRange="[6.0.0)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.pipboy]]
+    modId="create_new_age"
+    type="required"
+    versionRange="[1.1.7c+mc1.21.1)"
+    ordering="NONE"
+    side="BOTH"
 
 
 

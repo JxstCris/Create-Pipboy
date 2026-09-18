@@ -69,6 +69,15 @@ public class PipboyModVariables {
 		clone.pipboy_tab = original.pipboy_tab;
 		clone.pipboy_data_tab = original.pipboy_data_tab;
 		clone.pipboy_data_page = original.pipboy_data_page;
+		clone.radar_p1_x = original.radar_p1_x;
+		clone.radar_p1_z = original.radar_p1_z;
+		clone.player_p1_set = original.player_p1_set;
+		clone.radar_p2_x = original.radar_p2_x;
+		clone.radar_p2_z = original.radar_p2_z;
+		clone.player_p2_set = original.player_p2_set;
+		clone.radar_p3_x = original.radar_p3_x;
+		clone.radar_p3_z = original.radar_p3_z;
+		clone.player_p3_set = original.player_p3_set;
 		if (!event.isWasDeath()) {
 		}
 		event.getEntity().setData(PLAYER_VARIABLES, clone);
@@ -80,6 +89,15 @@ public class PipboyModVariables {
 		public double pipboy_tab = 0.0;
 		public double pipboy_data_tab = 0;
 		public double pipboy_data_page = 0;
+		public double radar_p1_x = 0;
+		public double radar_p1_z = 0;
+		public boolean player_p1_set = false;
+		public double radar_p2_x = 0;
+		public double radar_p2_z = 0;
+		public boolean player_p2_set = false;
+		public double radar_p3_x = 0;
+		public double radar_p3_z = 0;
+		public boolean player_p3_set = false;
 
 		@Override
 		public CompoundTag serializeNBT(HolderLookup.Provider lookupProvider) {
@@ -88,6 +106,15 @@ public class PipboyModVariables {
 			nbt.putDouble("pipboy_tab", pipboy_tab);
 			nbt.putDouble("pipboy_data_tab", pipboy_data_tab);
 			nbt.putDouble("pipboy_data_page", pipboy_data_page);
+			nbt.putDouble("radar_p1_x", radar_p1_x);
+			nbt.putDouble("radar_p1_z", radar_p1_z);
+			nbt.putBoolean("player_p1_set", player_p1_set);
+			nbt.putDouble("radar_p2_x", radar_p2_x);
+			nbt.putDouble("radar_p2_z", radar_p2_z);
+			nbt.putBoolean("player_p2_set", player_p2_set);
+			nbt.putDouble("radar_p3_x", radar_p3_x);
+			nbt.putDouble("radar_p3_z", radar_p3_z);
+			nbt.putBoolean("player_p3_set", player_p3_set);
 			return nbt;
 		}
 
@@ -97,6 +124,15 @@ public class PipboyModVariables {
 			pipboy_tab = nbt.getDouble("pipboy_tab");
 			pipboy_data_tab = nbt.getDouble("pipboy_data_tab");
 			pipboy_data_page = nbt.getDouble("pipboy_data_page");
+			radar_p1_x = nbt.getDouble("radar_p1_x");
+			radar_p1_z = nbt.getDouble("radar_p1_z");
+			player_p1_set = nbt.getBoolean("player_p1_set");
+			radar_p2_x = nbt.getDouble("radar_p2_x");
+			radar_p2_z = nbt.getDouble("radar_p2_z");
+			player_p2_set = nbt.getBoolean("player_p2_set");
+			radar_p3_x = nbt.getDouble("radar_p3_x");
+			radar_p3_z = nbt.getDouble("radar_p3_z");
+			player_p3_set = nbt.getBoolean("player_p3_set");
 		}
 
 		public void markSyncDirty() {

@@ -32,7 +32,7 @@ public class GuipipboymainMenu extends AbstractContainerMenu implements PipboyMo
 	public final Map<String, Object> menuState = new HashMap<>() {
 		@Override
 		public Object put(String key, Object value) {
-			if (!this.containsKey(key) && this.size() >= 47)
+			if (!this.containsKey(key) && this.size() >= 53)
 				return null;
 			return super.put(key, value);
 		}

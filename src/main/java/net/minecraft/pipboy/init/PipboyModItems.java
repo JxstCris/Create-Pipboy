@@ -12,11 +12,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.pipboy.item.inventory.Pipboy3000InventoryCapability;
-import net.minecraft.pipboy.item.UnfinishedpipboyItem;
-import net.minecraft.pipboy.item.RedstoneCoreItem;
-import net.minecraft.pipboy.item.PipboycaseItem;
-import net.minecraft.pipboy.item.Pipboy3000Item;
-import net.minecraft.pipboy.item.EnergyzedRedsoneCoreItem;
+import net.minecraft.pipboy.item.*;
 import net.minecraft.pipboy.PipboyMod;
 
 @EventBusSubscriber
@@ -27,12 +23,14 @@ public class PipboyModItems {
 	public static final DeferredItem<Item> ENERGYZED_REDSTONE_CORE;
 	public static final DeferredItem<Item> PIPBOYCASE;
 	public static final DeferredItem<Item> UNFINISHEDPIPBOY;
+	public static final DeferredItem<Item> STORAGE_COMPONENT;
 	static {
 		PIPBOY_3000 = REGISTRY.register("pipboy_3000", Pipboy3000Item::new);
 		REDSTONE_CORE = REGISTRY.register("redstone_core", RedstoneCoreItem::new);
 		ENERGYZED_REDSTONE_CORE = REGISTRY.register("energyzed_redstone_core", EnergyzedRedsoneCoreItem::new);
 		PIPBOYCASE = REGISTRY.register("pipboycase", PipboycaseItem::new);
 		UNFINISHEDPIPBOY = REGISTRY.register("unfinishedpipboy", UnfinishedpipboyItem::new);
+		STORAGE_COMPONENT = REGISTRY.register("storage_component", StoragecomponentItem::new);
 	}
 
 	// Start of user code block custom items

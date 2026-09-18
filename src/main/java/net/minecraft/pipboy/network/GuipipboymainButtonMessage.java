@@ -8,9 +8,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.pipboy.procedures.StatbuttonProcedure;
-import net.minecraft.pipboy.procedures.ItembuttonProcedure;
-import net.minecraft.pipboy.procedures.DatabuttonProcedure;
+import net.minecraft.pipboy.procedures.*;
 import net.minecraft.pipboy.PipboyMod;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.PacketFlow;
@@ -59,6 +57,30 @@ public record GuipipboymainButtonMessage(int buttonID, int x, int y, int z) impl
 		if (buttonID == 2) {
 
 			DatabuttonProcedure.execute(world, x, y, z, entity);
+		}
+		if (buttonID == 3) {
+
+			Savpnt1Procedure.execute(x, z, entity);
+		}
+		if (buttonID == 4) {
+
+			Delpnt1Procedure.execute(entity);
+		}
+		if (buttonID == 5) {
+
+			Savpnt2Procedure.execute(x, z, entity);
+		}
+		if (buttonID == 6) {
+
+			Delpnt2Procedure.execute(entity);
+		}
+		if (buttonID == 7) {
+
+			Savpnt3Procedure.execute(x, z, entity);
+		}
+		if (buttonID == 8) {
+
+			Delpnt3Procedure.execute(entity);
 		}
 	}
 

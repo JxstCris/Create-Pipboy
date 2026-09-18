@@ -8,13 +8,13 @@
   ],
   "key": {
     "a": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:gold_ingot"
     },
     "b": {
       "item": "minecraft:redstone"
     },
     "c": {
-      "item": "minecraft:gold_ingot"
+      "item": "minecraft:iron_ingot"
     },
     "d": {
       "item": "minecraft:copper_block"

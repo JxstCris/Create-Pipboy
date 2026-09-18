@@ -49,6 +49,22 @@
           "item": "pipboy:unfinishedpipboy"
         },
         {
+          "item": "pipboy:storage_component"
+        }
+      ],
+      "results": [
+        {
+          "id": "pipboy:unfinishedpipboy"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "pipboy:unfinishedpipboy"
+        },
+        {
           "item": "create:electron_tube"
         }
       ],
